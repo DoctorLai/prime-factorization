@@ -1,0 +1,124 @@
+/* ========== Base App Styles ========== */
+.app {
+  background-color: #ffffff;
+  color: #000000;
+  font-family: sans-serif;
+  min-height: 100vh;
+  padding: 1rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.app.dark {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+/* ========== Header ========== */
+h1 {
+  margin-bottom: 1rem;
+}
+
+/* ========== Input Field ========== */
+input[type="number"] {
+  width: 250px;
+  padding: 0.5rem;
+  font-size: 1rem;
+  margin-right: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f0f0f0;
+  color: #000;
+  box-sizing: border-box;
+}
+
+.app.dark input[type="number"] {
+  background-color: #1e1e1e;
+  color: #eee;
+  border: 1px solid #444;
+}
+
+/* ========== Buttons ========== */
+button {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  margin-right: 1rem;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+  border-radius: 7px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  transition: background-color 0.2s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.app.dark button {
+  background-color: #1a73e8;
+}
+
+/* ========== Result Section ========== */
+h2 {
+  margin-top: 1rem;
+  color: #222;
+}
+
+.app.dark h2 {
+  color: #ddd;
+}
+
+/* ========== Prime List Section ========== */
+h3 {
+  margin-top: 2rem;
+}
+
+p {
+  line-height: 1.5;
+}
+
+/* ========== Footer ========== */
+footer {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 1rem;
+}
+
+footer p {
+  margin: 0.5rem 0;
+  color: #555;
+}
+
+.app.dark footer p {
+  color: #aaa;
+}
+
+footer a {
+  text-decoration: none;
+  font-weight: bold;
+  color: #007bff;
+}
+
+footer a:hover {
+  color: #0056b3;
+}
+
+footer a.link {
+  text-decoration: underline;
+}
+
+/* ========== Result Box ========== */
+.result-box {
+  background-color: #f9f9f9;   /* light background */
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-top: 1rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.app.dark .result-box {
+  background-color: #1e1e1e;   /* slightly lighter than dark background */
+  border: 1px solid #444;
+}
