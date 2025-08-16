@@ -24,45 +24,56 @@ The live demo is deployed here:
 To run the app locally:
 
 1. Clone the repository:  
-<code>git clone https://github.com/doctorlai/prime-factorization.git  
-cd prime-factorization</code>
+```bash
+git clone https://github.com/doctorlai/prime-factorization.git  
+cd prime-factorization
+```
 
 2. Install dependencies:  
-<code>npm install</code>
+```bash
+npm install
+```
 
 3. Start the development server:  
-<code>npm run dev</code>
+```bash
+npm run dev
+```
 
 4. Run tests:  
-<code>npm run test</code>
+```bash
+npm run test
+```
 
 5. Format code:  
-<code>npm run format</code> &nbsp;# Check formatting  
-<code>npm run format:fix</code> &nbsp;# Fix formatting automatically  
+Run: <code>npm run format</code> to check code formatting and;
+Run: <code>npm run format:fix</code> to fix formatting automatically.
 
 6. Open [http://localhost:5173/prime-factorization/](http://localhost:5173/prime-factorization/) in your browser.
 
 ## Usage
-
 1. Enter a **positive integer** in the input box.  
-2. Click **"Factorize"**.  
-3. The prime factorization will be displayed in a styled result box.  
-4. Scroll down to see all prime numbers up to 1000.  
-5. Toggle **Light/Dark Mode** with the 🌞/🌙 button.  
+2. The prime factorization will be displayed in a styled result box.  
+3. Scroll down to see all prime numbers up to 2000.  
+4. Toggle **Light/Dark Mode** with the 🌞/🌙 button.  
 
 ## Contributing
 
 Contributions are welcome!
-
 1. Fork the repository.  
 2. Create a feature branch:  
-<code>git checkout -b feature-branch</code>  
+```bash
+git checkout -b feature-branch
+```
 
 3. Commit your changes:  
-<code>git commit -am 'Add new feature'</code>  
+```bash
+git commit -am 'Add new feature'
+```
 
 4. Push to your fork:  
-<code>git push origin feature-branch</code>  
+```bash
+git push origin feature-branch
+```
 
 5. Open a Pull Request.  
 
@@ -77,5 +88,5 @@ See the [AI generated wiki](https://deepwiki.com/DoctorLai/prime-factorization) 
 ## Acknowledgments
 
 - Built with ❤️ by [@justyy](https://github.com/doctorlai)  
-- Initial boilerplate provided by ChatGPT  
-- If you found this tool useful, consider buying me a [coffee](https://justyy.com/out/bmc) ☕
+- Initial boilerplate provided by ChatGPT.
+- If you found this tool useful, consider buying me a [coffee](https://justyy.com/out/bmc) ☕ Thank you!
