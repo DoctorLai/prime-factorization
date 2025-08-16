@@ -15,9 +15,10 @@ A simple React web app that computes the prime factorization of any positive int
 ## Live Demo
 
 The live demo is deployed here:  
-👉 [GitHub Pages: Prime Factorization Tool](https://doctorlai.github.io/prime-factorization/)
+- [GitHub Pages: Prime Factorization Tool](https://doctorlai.github.io/prime-factorization/)
+- Alternative Tool: [Integer Factorization to Prime Factors with API](https://helloacm.com/tools/factor/)
 
-<img width="834" height="722" alt="image" src="https://github.com/user-attachments/assets/153265a2-7331-4098-a527-f2b58bcbcbe9" />
+<img alt="image" src="https://github.com/user-attachments/assets/153265a2-7331-4098-a527-f2b58bcbcbe9" />
 
 ## Installation
 

@@ -89,6 +89,10 @@ export default function App() {
               rel="noopener noreferrer"
             >
               GitHub
+            </a>{" "}
+            | Alternative Tool:{" "}
+            <a target="_blank" href="https://helloacm.com/tools/factor/">
+              Integer Factorization to Prime Factors with API
             </a>
           </p>
         </div>
