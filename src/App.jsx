@@ -9,7 +9,7 @@ export default function App() {
   });
 
   const [number, setNumber] = useState(24);
-  const [result, setResult] = useState("24 => 23 * 3");
+  const [result, setResult] = useState("24 => 2<sup>3</sup> * 3");
   const primes = generatePrimes(2000);
 
   useEffect(() => {
