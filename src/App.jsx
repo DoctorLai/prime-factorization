@@ -9,17 +9,20 @@ export default function App() {
   });
 
   const [number, setNumber] = useState(24);
-  const [result, setResult] = useState("");
+  const [result, setResult] = useState("24 => 23 * 3");
   const primes = generatePrimes(2000);
 
   useEffect(() => {
     localStorage.setItem("darkMode", darkMode);
   }, [darkMode]);
 
-  const handleFactorize = () => {
-    if (number > 0) {
-      const factors = primeFactorization(number);
-      setResult(`${number} => ${factors}`);
+  const handleChange = (e) => {
+    const value = e.target.value;
+    setNumber(value);
+
+    if (value && Number(value) > 0) {
+      const factors = primeFactorization(value);
+      setResult(`${value} => ${factors}`);
     } else {
       setResult("Please enter a positive integer.");
     }
@@ -27,19 +30,14 @@ export default function App() {
 
   return (
     <div className={darkMode ? "app dark" : "app"}>
-      <button onClick={() => setDarkMode(!darkMode)}>
-        {darkMode ? "🌞 Light Mode" : "🌙 Dark Mode"}
-      </button>
-
       <div>
         <h1>🔢 Prime Factorization App</h1>
         <input
           type="number"
           value={number}
-          onChange={(e) => setNumber(e.target.value)}
+          onChange={handleChange}
           placeholder="Enter a positive integer"
         />
-        <button onClick={handleFactorize}>Factorize</button>
 
         {result && (
           <div className="result-box">
@@ -55,6 +53,10 @@ export default function App() {
         <h3>All Prime Numbers up to 2000:</h3>
         <p style={{ maxWidth: "800px" }}>{primes.join(", ")}</p>
       </div>
+
+      <button onClick={() => setDarkMode(!darkMode)}>
+        {darkMode ? "🌞 Light Mode" : "🌙 Dark Mode"}
+      </button>
 
       <footer>
         <div className="footer">
