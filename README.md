@@ -1,4 +1,6 @@
 # Prime Factorization App
+[![Prime Factorization (Built, Lint and Test)](https://github.com/DoctorLai/prime-factorization/actions/workflows/ci.yaml/badge.svg?branch=main)](https://github.com/DoctorLai/prime-factorization/actions/workflows/ci.yaml)
+
 A simple React web app that computes the prime factorization of any positive integer and displays it in a clean, styled format. It also lists all prime numbers up to 2000 for quick reference. The project supports dark mode, is fully tested with Vitest, and can be easily deployed to GitHub Pages.
 
 ## Features
@@ -15,6 +17,7 @@ A simple React web app that computes the prime factorization of any positive int
 The live demo is deployed here:  
 👉 [GitHub Pages: Prime Factorization Tool](https://doctorlai.github.io/prime-factorization/)
 
+<img width="834" height="722" alt="image" src="https://github.com/user-attachments/assets/153265a2-7331-4098-a527-f2b58bcbcbe9" />
 
 ## Installation
 
@@ -65,7 +68,7 @@ Contributions are welcome!
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
 
 ## Documentation
 
