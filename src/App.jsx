@@ -87,7 +87,7 @@ export default function App() {
             >
               coffee
             </a>{" "}
-            ☕16
+            ☕
           </p>
           <p>
             Open Source on{" "}
