@@ -22,7 +22,15 @@ export default function App() {
 
     if (value && Number(value) > 0) {
       const factors = primeFactorization(value);
-      setResult(`${value} => ${factors}`);
+      if (value == factors) {
+        setResult(
+          `${value} => ${factors}<br/><br/>(${value} is a prime number)`,
+        );
+      } else {
+        setResult(
+          `${value} => ${factors}<br/><br/>(${value} is a composite number)`,
+        );
+      }
     } else {
       setResult("Please enter a positive integer.");
     }
