@@ -1,7 +1,7 @@
 // functions.js
 export function primeFactorization(input) {
   if (input === null || input === undefined || input === "") {
-    return "No prime factors";
+    return "Please enter a number";
   }
 
   // Accept number | string | bigint
@@ -55,10 +55,13 @@ export function primeFactorization(input) {
     .join(" * ");
 }
 
+// Generate all primes up to a given limit using the Sieve of Eratosthenes
 export function generatePrimes(limit) {
   // Same as before; limit is a small Number (e.g., 1000)
   const n = Math.floor(Number(limit));
-  if (n < 2 || !Number.isFinite(n)) return [];
+  if (n < 2 || !Number.isFinite(n)) {
+    return [];
+  }
   const sieve = Array(n + 1).fill(true);
   sieve[0] = sieve[1] = false;
   for (let i = 2; i * i <= n; i++) {

@@ -25,6 +25,18 @@ describe("primeFactorization", () => {
     expect(primeFactorization(0)).toBe("No prime factors");
     expect(primeFactorization(-5)).toBe("No prime factors");
   });
+
+  it("should handle BigInt input", () => {
+    expect(primeFactorization(12345678901234567890n)).toBe(
+      "2 * 3<sup>2</sup> * 5 * 101 * 3541 * 3607 * 3803 * 27961",
+    );
+  });
+
+  it("should handle string input", () => {
+    expect(primeFactorization("56")).toBe("2<sup>3</sup> * 7");
+    expect(primeFactorization("97")).toBe("97");
+    expect(primeFactorization("not a number")).toBe("No prime factors");
+  });
 });
 
 describe("generatePrimes", () => {
@@ -47,5 +59,10 @@ describe("generatePrimes", () => {
     expect(generatePrimes(1)).toEqual([]);
     expect(generatePrimes(0)).toEqual([]);
     expect(generatePrimes(-10)).toEqual([]);
+  });
+
+  it("should handle non-integer limits", () => {
+    expect(generatePrimes(10.7)).toEqual([2, 3, 5, 7]);
+    expect(generatePrimes(15.2)).toEqual([2, 3, 5, 7, 11, 13]);
   });
 });
