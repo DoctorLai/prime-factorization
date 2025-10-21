@@ -12,6 +12,7 @@ export default function App() {
   const [result, setResult] = useState("24 => 2<sup>3</sup> * 3");
   const primes = generatePrimes(2000);
 
+  
   useEffect(() => {
     localStorage.setItem("darkMode", darkMode);
   }, [darkMode]);
