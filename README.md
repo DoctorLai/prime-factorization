@@ -48,7 +48,7 @@ npm run test
 
 5. Test coverage:
 ```bash
-npx vitest run --coverage
+npm run coverage
 ```
 
 6. Format code:  
