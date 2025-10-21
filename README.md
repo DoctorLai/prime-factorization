@@ -42,10 +42,16 @@ npm run dev
 
 4. Run tests:  
 ```bash
+## or simply: npm test
 npm run test
 ```
 
-5. Format code:  
+5. Test coverage:
+```bash
+npx vitest run --coverage
+```
+
+6. Format code:  
 Run: <code>npm run format</code> to check code formatting and;
 Run: <code>npm run format:fix</code> to fix formatting automatically.
 
