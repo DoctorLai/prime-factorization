@@ -25,7 +25,7 @@
     "npm": ">=10"
   },
   "dependencies": {
-    "react": "^18.3.1",
+    "react": "^19.2.7",
     "react-dom": "^19.2.7"
   },
   "devDependencies": {
