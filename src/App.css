@@ -118,6 +118,10 @@ footer a.link {
   text-decoration: underline;
 }
 
+footer .version {
+  font-size: 0.875rem;
+}
+
 /* ========== Result Box ========== */
 .result-box {
   background-color: #f9f9f9; /* light background */

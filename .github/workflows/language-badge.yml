@@ -20,10 +20,10 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v7
+        uses: actions/checkout@v4
 
       - name: Set up Node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v4
         with:
           node-version-file: .nvmrc
           cache: npm
@@ -34,8 +34,33 @@ jobs:
       - name: Update JavaScript percentage badge
         run: npm run badges:languages
 
-      - name: Commit badge data
-        uses: stefanzweifel/git-auto-commit-action@v7
-        with:
-          commit_message: "chore: update language badge data"
-          file_pattern: badges/languages.json
+      - name: Publish badge data to badges branch
+        run: |
+          set -euo pipefail
+
+          badge_file="$RUNNER_TEMP/languages.json"
+          worktree="$RUNNER_TEMP/badges-branch"
+
+          cp badges/languages.json "$badge_file"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          if git ls-remote --exit-code --heads origin badges >/dev/null 2>&1; then
+            git fetch origin badges
+            git worktree add "$worktree" origin/badges
+            git -C "$worktree" checkout -B badges
+          else
+            git worktree add --detach "$worktree"
+            git -C "$worktree" checkout --orphan badges
+            git -C "$worktree" rm -rf . || true
+          fi
+
+          cp "$badge_file" "$worktree/languages.json"
+          git -C "$worktree" add languages.json
+
+          if git -C "$worktree" diff --cached --quiet; then
+            echo "No badge data changes to publish."
+          else
+            git -C "$worktree" commit -m "chore: update language badge data"
+            git -C "$worktree" push origin badges
+          fi
