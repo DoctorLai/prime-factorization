@@ -1,6 +1,11 @@
 import "./App.css";
 import { useState, useEffect } from "react";
-import { primeFactorization, generatePrimes } from "./functions";
+import {
+  generatePrimes,
+  isPositiveIntegerInput,
+  isPrime,
+  primeFactorization,
+} from "./functions";
 
 export default function App() {
   const [darkMode, setDarkMode] = useState(() => {
@@ -20,9 +25,9 @@ export default function App() {
     const value = e.target.value;
     setNumber(value);
 
-    if (value && Number(value) > 0) {
+    if (isPositiveIntegerInput(value)) {
       const factors = primeFactorization(value);
-      if (value == factors) {
+      if (isPrime(value)) {
         setResult(
           `${value} => ${factors}<br/><br/>(${value} is a prime number)`,
         );
@@ -81,7 +86,7 @@ export default function App() {
           <p>
             If you found this useful, consider buying me a{" "}
             <a
-              href="https://justyy.com/out/bmc"
+              href="https://buymeacoffee.com/y0btg5r"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -99,7 +104,11 @@ export default function App() {
               GitHub
             </a>{" "}
             | Alternative Tool:{" "}
-            <a target="_blank" href="https://helloacm.com/tools/factor/">
+            <a
+              target="_blank"
+              rel="noreferrer"
+              href="https://helloacm.com/tools/factor/"
+            >
               Integer Factorization to Prime Factors with API
             </a>
           </p>

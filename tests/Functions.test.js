@@ -1,5 +1,10 @@
 import { describe, it, expect } from "vitest";
-import { primeFactorization, generatePrimes } from "../src/functions";
+import {
+  generatePrimes,
+  isPositiveIntegerInput,
+  isPrime,
+  primeFactorization,
+} from "../src/functions";
 
 describe("primeFactorization", () => {
   it("should return correct factorization for small numbers", () => {
@@ -21,6 +26,7 @@ describe("primeFactorization", () => {
   });
 
   it("should return message for invalid input", () => {
+    expect(primeFactorization("")).toBe("Please enter a number");
     expect(primeFactorization(1)).toBe("No prime factors");
     expect(primeFactorization(0)).toBe("No prime factors");
     expect(primeFactorization(-5)).toBe("No prime factors");
@@ -36,6 +42,38 @@ describe("primeFactorization", () => {
     expect(primeFactorization("56")).toBe("2<sup>3</sup> * 7");
     expect(primeFactorization("97")).toBe("97");
     expect(primeFactorization("not a number")).toBe("No prime factors");
+  });
+});
+
+describe("isPrime", () => {
+  it("identifies prime and composite integers", () => {
+    expect(isPrime(2)).toBe(true);
+    expect(isPrime(97)).toBe(true);
+    expect(isPrime(25)).toBe(false);
+    expect(isPrime(100)).toBe(false);
+    expect(isPrime("12345678901234567890")).toBe(false);
+  });
+
+  it("rejects invalid or non-prime inputs", () => {
+    expect(isPrime(1)).toBe(false);
+    expect(isPrime(2.5)).toBe(false);
+    expect(isPrime("not a number")).toBe(false);
+  });
+});
+
+describe("isPositiveIntegerInput", () => {
+  it("accepts positive integer input values", () => {
+    expect(isPositiveIntegerInput("13")).toBe(true);
+    expect(isPositiveIntegerInput(13)).toBe(true);
+    expect(isPositiveIntegerInput(13n)).toBe(true);
+  });
+
+  it("rejects decimals, zero, negatives, and non-numeric values", () => {
+    expect(isPositiveIntegerInput("2.5")).toBe(false);
+    expect(isPositiveIntegerInput("0")).toBe(false);
+    expect(isPositiveIntegerInput("-3")).toBe(false);
+    expect(isPositiveIntegerInput("not a number")).toBe(false);
+    expect(isPositiveIntegerInput({ value: 13 })).toBe(false);
   });
 });
 

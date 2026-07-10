@@ -1,4 +1,4 @@
-name: Prime Factorization (Built, Lint and Test)
+name: CI
 
 on:
   push:
@@ -8,44 +8,55 @@ on:
     branches:
       - main
 
+permissions:
+  contents: read
+  pull-requests: write
+  checks: write
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
-  build:
+  check:
+    name: Format, lint, test, coverage, and build
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      # Set up Node.js
       - name: Set up Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: '18'  # or '20' for the latest LTS
+          node-version-file: .nvmrc
+          cache: npm
 
-      # Cache node_modules
-      - name: Cache node modules
-        uses: actions/cache@v3
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-
-      # Install dependencies
       - name: Install dependencies
-        run: npm install --legacy-peer-deps
+        run: npm ci
 
-      # Run Prettier
-      - name: Run Prettier
+      - name: Check formatting
         run: npm run format
 
-      # Run tests
-      - name: Run tests
-        run: npm run test
+      - name: Lint
+        run: npm run lint
+
+      - name: Run coverage
+        run: npm run coverage
         env:
           CI: true
-          NODE_OPTIONS: --enable-source-maps --max-old-space-size=4096  # Optional
+          NODE_OPTIONS: --enable-source-maps --max-old-space-size=4096
 
-      # Build the project
-      - name: Build the project
+      - name: Comment coverage report
+        if: github.event_name == 'pull_request'
+        uses: davelosert/vitest-coverage-report-action@v2
+        with:
+          name: Coverage Report
+          json-summary-path: coverage/coverage-summary.json
+          json-final-path: coverage/coverage-final.json
+
+      - name: Build
         run: npm run build
+
+      - name: Test
+        run: npm run test
