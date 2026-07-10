@@ -9,6 +9,7 @@ describe("App", () => {
   it("renders the Prime Factorization UI", () => {
     render(<App />);
     expect(screen.getByText(/Prime Factorization/i)).to.exist;
+    expect(screen.getByText("Version 2026.7.10")).to.exist;
   });
 
   it("shows whether entered numbers are prime or composite", () => {

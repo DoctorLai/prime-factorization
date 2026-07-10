@@ -8,6 +8,7 @@ import {
 } from "./functions";
 
 const NUMBER_STORAGE_KEY = "primeFactorizationNumber";
+const APP_VERSION = "2026.7.10";
 
 function getFactorizationResult(value) {
   if (!isPositiveIntegerInput(value)) {
@@ -113,6 +114,7 @@ export default function App() {
               Integer Factorization to Prime Factors with API
             </a>
           </p>
+          <p className="version">Version {APP_VERSION}</p>
         </div>
       </footer>
     </div>
