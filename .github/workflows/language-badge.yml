@@ -1,0 +1,41 @@
+name: Language Badge
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - src/**
+      - index.html
+      - scripts/update-language-badge.mjs
+      - .github/workflows/language-badge.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-language-badge:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Update JavaScript percentage badge
+        run: npm run badges:languages
+
+      - name: Commit badge data
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: update language badge data"
+          file_pattern: badges/languages.json

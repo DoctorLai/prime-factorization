@@ -1,0 +1,12 @@
+* text=auto eol=lf
+
+*.gif binary
+*.ico binary
+*.jpg binary
+*.jpeg binary
+*.png binary
+*.webp binary
+
+dist/ export-ignore
+coverage/ export-ignore
+node_modules/ export-ignore

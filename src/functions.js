@@ -8,8 +8,12 @@ export function primeFactorization(input) {
   let n;
   try {
     // Reject non-integers early
-    if (typeof input === "number" && !Number.isInteger(input))
+    if (
+      typeof input === "number" &&
+      (!Number.isInteger(input) || !Number.isSafeInteger(input))
+    ) {
       return "No prime factors";
+    }
     // Convert safely to BigInt
     n = typeof input === "bigint" ? input : BigInt(input);
   } catch {
@@ -53,6 +57,56 @@ export function primeFactorization(input) {
       e === 1 ? `${p.toString()}` : `${p.toString()}<sup>${e}</sup>`,
     )
     .join(" * ");
+}
+
+export function isPrime(input) {
+  let number;
+  try {
+    if (
+      typeof input === "number" &&
+      (!Number.isInteger(input) || !Number.isSafeInteger(input))
+    ) {
+      return false;
+    }
+    number = typeof input === "bigint" ? input : BigInt(input);
+  } catch {
+    return false;
+  }
+
+  if (number < 2n) {
+    return false;
+  }
+  if (number === 2n || number === 3n) {
+    return true;
+  }
+  if (number % 2n === 0n || number % 3n === 0n) {
+    return false;
+  }
+
+  let divisor = 5n;
+  while (divisor * divisor <= number) {
+    if (number % divisor === 0n || number % (divisor + 2n) === 0n) {
+      return false;
+    }
+    divisor += 6n;
+  }
+
+  return true;
+}
+
+export function isPositiveIntegerInput(input) {
+  if (typeof input === "bigint") {
+    return input > 0n;
+  }
+  if (typeof input === "number") {
+    return Number.isInteger(input) && Number.isSafeInteger(input) && input > 0;
+  }
+  if (typeof input !== "string") {
+    return false;
+  }
+
+  const trimmedInput = input.trim();
+  return /^\d+$/.test(trimmedInput) && BigInt(trimmedInput) > 0n;
 }
 
 // Generate all primes up to a given limit using the Sieve of Eratosthenes

@@ -5,7 +5,9 @@
   font-family: sans-serif;
   min-height: 100vh;
   padding: 1rem;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
 .app.dark {
@@ -104,13 +106,21 @@ footer a:hover {
   color: #0056b3;
 }
 
+.app.dark footer a {
+  color: #ffd84d;
+}
+
+.app.dark footer a:hover {
+  color: #ffe680;
+}
+
 footer a.link {
   text-decoration: underline;
 }
 
 /* ========== Result Box ========== */
 .result-box {
-  background-color: #f9f9f9;   /* light background */
+  background-color: #f9f9f9; /* light background */
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 1rem;
@@ -119,6 +129,6 @@ footer a.link {
 }
 
 .app.dark .result-box {
-  background-color: #1e1e1e;   /* slightly lighter than dark background */
+  background-color: #1e1e1e; /* slightly lighter than dark background */
   border: 1px solid #444;
 }

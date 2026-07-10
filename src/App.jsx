@@ -1,6 +1,23 @@
 import "./App.css";
 import { useState, useEffect } from "react";
-import { primeFactorization, generatePrimes } from "./functions";
+import {
+  generatePrimes,
+  isPositiveIntegerInput,
+  isPrime,
+  primeFactorization,
+} from "./functions";
+
+const NUMBER_STORAGE_KEY = "primeFactorizationNumber";
+
+function getFactorizationResult(value) {
+  if (!isPositiveIntegerInput(value)) {
+    return "Please enter a positive integer.";
+  }
+
+  const factors = primeFactorization(value);
+  const category = isPrime(value) ? "prime" : "composite";
+  return `${value} => ${factors}<br/><br/>(${value} is a ${category} number)`;
+}
 
 export default function App() {
   const [darkMode, setDarkMode] = useState(() => {
@@ -8,8 +25,10 @@ export default function App() {
     return saved === "true";
   });
 
-  const [number, setNumber] = useState(24);
-  const [result, setResult] = useState("24 => 2<sup>3</sup> * 3");
+  const [number, setNumber] = useState(() => {
+    return localStorage.getItem(NUMBER_STORAGE_KEY) ?? "24";
+  });
+  const [result, setResult] = useState(() => getFactorizationResult(number));
   const primes = generatePrimes(2000);
 
   useEffect(() => {
@@ -19,21 +38,8 @@ export default function App() {
   const handleChange = (e) => {
     const value = e.target.value;
     setNumber(value);
-
-    if (value && Number(value) > 0) {
-      const factors = primeFactorization(value);
-      if (value == factors) {
-        setResult(
-          `${value} => ${factors}<br/><br/>(${value} is a prime number)`,
-        );
-      } else {
-        setResult(
-          `${value} => ${factors}<br/><br/>(${value} is a composite number)`,
-        );
-      }
-    } else {
-      setResult("Please enter a positive integer.");
-    }
+    localStorage.setItem(NUMBER_STORAGE_KEY, value);
+    setResult(getFactorizationResult(value));
   };
 
   return (
@@ -81,7 +87,7 @@ export default function App() {
           <p>
             If you found this useful, consider buying me a{" "}
             <a
-              href="https://justyy.com/out/bmc"
+              href="https://buymeacoffee.com/y0btg5r"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -99,7 +105,11 @@ export default function App() {
               GitHub
             </a>{" "}
             | Alternative Tool:{" "}
-            <a target="_blank" href="https://helloacm.com/tools/factor/">
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://helloacm.com/tools/factor/"
+            >
               Integer Factorization to Prime Factors with API
             </a>
           </p>

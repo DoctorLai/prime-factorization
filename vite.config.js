@@ -1,26 +1,13 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
 
-export default defineConfig(({ command }) => ({
-  base: '/prime-factorization/',
+export default defineConfig({
+  base: "/prime-factorization/",
   plugins: [react()],
   build: {
-    outDir: 'dist',
-  },
-  test: {
-    globals: true,
-    environment: "jsdom",
-    setupFiles: "./tests/test.setup.js",
+    outDir: "dist",
   },
   define: {
-    'process.env': {},
+    "process.env": {},
   },
-  optimizeDeps: {
-    include: ['crypto-browserify']
-  },
-  resolve: {
-    alias: {
-      'crypto': 'crypto-browserify'
-    }
-  },
-}))
+});

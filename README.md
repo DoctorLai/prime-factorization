@@ -1,99 +1,109 @@
 # Prime Factorization App
-[![Prime Factorization (Built, Lint and Test)](https://github.com/DoctorLai/prime-factorization/actions/workflows/ci.yaml/badge.svg?branch=main)](https://github.com/DoctorLai/prime-factorization/actions/workflows/ci.yaml) [![Run Tests with Coverage](https://github.com/DoctorLai/prime-factorization/actions/workflows/coverage.yaml/badge.svg)](https://github.com/DoctorLai/prime-factorization/actions/workflows/coverage.yaml)
 
-A simple React web app that computes the prime factorization of any positive integer and displays it in a clean, styled format. It also lists all prime numbers up to 2000 for quick reference. The project supports dark mode, is fully tested with Vitest, and can be easily deployed to GitHub Pages.
+[![CI](https://github.com/doctorlai/prime-factorization/actions/workflows/ci.yaml/badge.svg?branch=main)](https://github.com/doctorlai/prime-factorization/actions/workflows/ci.yaml)
+[![Last Commit](https://img.shields.io/github/last-commit/doctorlai/prime-factorization)](https://github.com/doctorlai/prime-factorization/commits/main)
+[![License](https://img.shields.io/github/license/doctorlai/prime-factorization)](LICENSE)
+[![GitHub Stars](https://img.shields.io/github/stars/doctorlai/prime-factorization?style=social)](https://github.com/doctorlai/prime-factorization/stargazers)
+[![Code Style](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://prettier.io/)
+[![Commits Activity](https://img.shields.io/github/commit-activity/m/doctorlai/prime-factorization)](https://github.com/doctorlai/prime-factorization/pulse)
+[![GitHub Commit Activity](https://img.shields.io/github/commit-activity/y/doctorlai/prime-factorization?label=commits%2Fyear)](https://github.com/doctorlai/prime-factorization/graphs/commit-activity)
+[![Watchers](https://img.shields.io/github/watchers/doctorlai/prime-factorization?style=social)](https://github.com/doctorlai/prime-factorization/watchers)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+[![JavaScript](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fdoctorlai%2Fprime-factorization%2Fmain%2Fbadges%2Flanguages.json)](badges/languages.json)
+[![Repo Size](https://img.shields.io/github/repo-size/doctorlai/prime-factorization)](https://github.com/doctorlai/prime-factorization)
+[![Top Language](https://img.shields.io/github/languages/top/doctorlai/prime-factorization)](https://github.com/doctorlai/prime-factorization)
+[![GitHub Open PRs](https://img.shields.io/github/issues-pr/doctorlai/prime-factorization)](https://github.com/doctorlai/prime-factorization/pulls)
+[![GitHub Open Issues](https://img.shields.io/github/issues/doctorlai/prime-factorization)](https://github.com/doctorlai/prime-factorization/issues)
+[![GitHub Forks](https://img.shields.io/github/forks/doctorlai/prime-factorization?style=social)](https://github.com/doctorlai/prime-factorization/forks)
+[![Node.js Version](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fdoctorlai%2Fprime-factorization%2Fmain%2Fpackage.json&query=%24.engines.node&label=Node.js&logo=node.js&color=339933)](package.json)
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/doctorlai/prime-factorization)
 
-## Features
-
-- **Prime Factorization**: Enter any positive integer and see its prime factors in exponent form (e.g., <code>24 => 2³ * 3</code>).
-- **Prime Number List**: Displays all prime numbers up to 2000 for reference.
-- **Dark Mode**: Toggle between light and dark modes for better readability.
-- **Clean Result Display**: Factorization results are highlighted in a styled result box.
-- **Simple and Intuitive UI**: Just enter a number and click "Factorize".
-- **Deploy Easily**: <code>npm run build</code> and <code>npm run deploy</code>.
+A small React web app that computes the prime factorization of a positive integer and displays all primes up to 2000 for quick reference. The app runs entirely in the browser, supports a persisted dark mode preference, and is tested with Vitest.
 
 ## Live Demo
 
-The live demo is deployed here:  
 - [GitHub Pages: Prime Factorization Tool](https://doctorlai.github.io/prime-factorization/)
-- Alternative Tool: [Integer Factorization to Prime Factors with API](https://helloacm.com/tools/factor/)
+- [Alternative Tool: Integer Factorization to Prime Factors with API](https://helloacm.com/tools/factor/)
 
-<img alt="image" src="https://github.com/user-attachments/assets/153265a2-7331-4098-a527-f2b58bcbcbe9" />
+<img alt="Prime Factorization app screenshot" src="https://github.com/user-attachments/assets/153265a2-7331-4098-a527-f2b58bcbcbe9" />
 
-## Installation
+## Features
 
-To run the app locally:
+- Prime factorization in exponent form, such as `24 => 2^3 * 3`.
+- Browser-only computation with no application server request for entered numbers.
+- Prime reference list up to 2000.
+- Light and dark mode toggle persisted in `localStorage`.
+- CI checks for formatting, linting, coverage thresholds, build, and tests.
+- Pull request coverage comments generated from Vitest coverage output.
 
-1. Clone the repository:  
+## Requirements
+
+- Node.js 20, matching [.nvmrc](.nvmrc).
+- npm 10 or newer.
+
+## Quick Start
+
 ```bash
-git clone https://github.com/doctorlai/prime-factorization.git  
+git clone https://github.com/doctorlai/prime-factorization.git
 cd prime-factorization
-```
-
-2. Install dependencies:  
-```bash
-npm install
-```
-
-3. Start the development server:  
-```bash
+nvm use
+npm ci
 npm run dev
 ```
 
-4. Run tests:  
-```bash
-## or simply: npm test
-npm run test
+Open [http://localhost:5173/prime-factorization/](http://localhost:5173/prime-factorization/) in your browser.
+
+## Commands
+
+| Command                    | Purpose                                    |
+| -------------------------- | ------------------------------------------ |
+| `npm run dev`              | Start the Vite development server.         |
+| `npm run format`           | Check Prettier formatting.                 |
+| `npm run format:fix`       | Format files with Prettier.                |
+| `npm run lint`             | Run ESLint.                                |
+| `npm run coverage`         | Run tests with coverage thresholds.        |
+| `npm run build`            | Build the production app.                  |
+| `npm run test`             | Run the Vitest suite once.                 |
+| `npm run check`            | Run formatting, lint, coverage, and build. |
+| `npm run ci`               | Alias for `npm run check`.                 |
+| `npm run clean`            | Remove generated `dist` and `coverage`.    |
+| `npm run badges:languages` | Refresh `badges/languages.json`.           |
+| `npm run deploy`           | Build and publish `dist` with `gh-pages`.  |
+
+## Coverage
+
+Coverage is enforced by `npm run coverage` with 80% minimum thresholds for lines, statements, functions, and branches. Pull requests receive a GitHub bot coverage comment through `davelosert/vitest-coverage-report-action`, using Vitest's `coverage/coverage-summary.json` and `coverage/coverage-final.json` output.
+
+## Project Structure
+
+```text
+src/                  React app and factorization functions
+tests/                Vitest and Testing Library tests
+.github/workflows/   CI and badge refresh automation
+badges/               Shields endpoint JSON generated by GitHub Actions
+scripts/              Maintenance scripts
 ```
-
-5. Test coverage:
-```bash
-npm run coverage
-```
-
-6. Format code:  
-Run: <code>npm run format</code> to check code formatting and;
-Run: <code>npm run format:fix</code> to fix formatting automatically.
-
-6. Open [http://localhost:5173/prime-factorization/](http://localhost:5173/prime-factorization/) in your browser.
-
-## Usage
-1. Enter a **positive integer** in the input box.  
-2. The prime factorization will be displayed in a styled result box.  
-3. Scroll down to see all prime numbers up to 2000.  
-4. Toggle **Light/Dark Mode** with the 🌞/🌙 button.  
-
-## Contributing
-
-Contributions are welcome!
-1. Fork the repository.  
-2. Create a feature branch:  
-```bash
-git checkout -b feature-branch
-```
-
-3. Commit your changes:  
-```bash
-git commit -am 'Add new feature'
-```
-
-4. Push to your fork:  
-```bash
-git push origin feature-branch
-```
-
-5. Open a Pull Request.  
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
 
 ## Documentation
 
-See the [AI generated wiki](https://deepwiki.com/DoctorLai/prime-factorization) for more background.
+- [Contributing](CONTRIBUTING.md)
+- [Changelog](CHANGELOG.md)
+- [Security Policy](SECURITY.md)
+- [Support](SUPPORT.md)
+- [Privacy](PRIVACY.md)
+- [Code of Conduct](CODE_OF_CONDUCT.md)
+- [Roadmap](ROADMAP.md)
+- [AI generated wiki](https://deepwiki.com/doctorlai/prime-factorization)
+
+## Internationalization
+
+This is not a browser extension and does not currently ship translated UI strings, so `_locales` and `lang` directories are intentionally not included. The roadmap leaves room for localization if the app grows beyond its current English-only interface.
+
+## License
+
+This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
 
 ## Acknowledgments
 
-- Built with ❤️ by [@justyy](https://github.com/doctorlai)  
-- Initial boilerplate provided by ChatGPT.
-- If you found this tool useful, consider buying me a [coffee](https://justyy.com/out/bmc) ☕ Thank you!
+- Built by [@justyy](https://github.com/doctorlai).
+- If you found this tool useful, consider buying the maintainer a [coffee](https://buymeacoffee.com/y0btg5r).

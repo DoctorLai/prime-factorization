@@ -1,46 +1,48 @@
 {
-  "name": "yaml-json-converter",
-  "version": "1.0.0",
+  "name": "prime-factorization",
+  "version": "2026.7.10",
+  "description": "A React app for computing prime factorizations and browsing small prime numbers.",
+  "homepage": "https://doctorlai.github.io/prime-factorization",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
     "test": "vitest --watch=false",
-    "coverage": "npx vitest run --coverage",
+    "coverage": "vitest run --coverage",
+    "lint": "eslint . --max-warnings=0",
+    "check": "npm run format && npm run lint && npm run coverage && npm run build",
+    "ci": "npm run check",
+    "clean": "rm -rf dist coverage",
+    "badges:languages": "node scripts/update-language-badge.mjs",
     "deploy": "npm run add-version && npm run build && gh-pages -d dist",
     "add-version": "echo \"VITE_COMMIT_HASH=$(git rev-parse --short HEAD)\" > .env",
-    "format": "prettier --check 'src/**/*.{js,jsx}' 'tests/**/*.{js,jsx}'",
-    "format:fix": "prettier --write 'src/**/*.{js,jsx}' 'tests/**/*.{js,jsx}'"
+    "format": "prettier --check .",
+    "format:fix": "prettier --write ."
+  },
+  "engines": {
+    "node": ">=20 <23",
+    "npm": ">=10"
   },
   "dependencies": {
-    "@testing-library/dom": "^10.4.0",
-    "crypto": "^1.0.1",
-    "crypto-browserify": "^3.12.1",
-    "js-yaml": "^4.1.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.27.1",
-    "@babel/preset-env": "^7.27.1",
-    "@babel/preset-react": "^7.27.1",
+    "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.3.0",
     "@vitejs/plugin-react": "^4.4.1",
     "@vitest/coverage-v8": "^3.2.4",
-    "babel-jest": "^29.7.0",
+    "eslint": "^9.31.0",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.20",
     "gh-pages": "^6.3.0",
-    "jest": "^29.7.0",
+    "globals": "^16.3.0",
     "jsdom": "^26.1.0",
     "prettier": "^3.5.3",
     "vite": "^6.3.4",
     "vitest": "^3.1.2"
-  },
-  "jest": {
-    "transform": {
-      "^.+\\.[t|j]sx?$": "babel-jest"
-    }
-  },
-  "homepage": "https://doctorlai.github.io/yaml-json-converter"
+  }
 }
