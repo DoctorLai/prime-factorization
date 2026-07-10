@@ -17,9 +17,21 @@ describe("App", () => {
 
     fireEvent.change(input, { target: { value: "13" } });
     expect(screen.getByText(/13 is a prime number/i)).to.exist;
+    expect(localStorage.getItem("primeFactorizationNumber")).toBe("13");
 
     fireEvent.change(input, { target: { value: "24" } });
     expect(screen.getByText(/24 is a composite number/i)).to.exist;
+  });
+
+  it("restores the saved number and result from localStorage", () => {
+    localStorage.setItem("primeFactorizationNumber", "13");
+
+    render(<App />);
+
+    expect(screen.getByPlaceholderText("Enter a positive integer").value).toBe(
+      "13",
+    );
+    expect(screen.getByText(/13 is a prime number/i)).to.exist;
   });
 
   it("shows a positive integer message for empty or invalid values", () => {

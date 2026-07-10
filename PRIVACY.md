@@ -8,7 +8,7 @@ The app does not send entered numbers to an application server. Factorization ru
 
 ## Local Storage
 
-The app stores the dark mode preference in `localStorage` under the `darkMode` key. This value stays in the user's browser and can be cleared through browser site-data settings.
+The app stores the dark mode preference in `localStorage` under the `darkMode` key and the last entered number under the `primeFactorizationNumber` key. These values stay in the user's browser and can be cleared through browser site-data settings.
 
 ## Third Parties
 

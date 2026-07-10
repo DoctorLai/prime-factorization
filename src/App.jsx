@@ -7,14 +7,28 @@ import {
   primeFactorization,
 } from "./functions";
 
+const NUMBER_STORAGE_KEY = "primeFactorizationNumber";
+
+function getFactorizationResult(value) {
+  if (!isPositiveIntegerInput(value)) {
+    return "Please enter a positive integer.";
+  }
+
+  const factors = primeFactorization(value);
+  const category = isPrime(value) ? "prime" : "composite";
+  return `${value} => ${factors}<br/><br/>(${value} is a ${category} number)`;
+}
+
 export default function App() {
   const [darkMode, setDarkMode] = useState(() => {
     const saved = localStorage.getItem("darkMode");
     return saved === "true";
   });
 
-  const [number, setNumber] = useState(24);
-  const [result, setResult] = useState("24 => 2<sup>3</sup> * 3");
+  const [number, setNumber] = useState(() => {
+    return localStorage.getItem(NUMBER_STORAGE_KEY) ?? "24";
+  });
+  const [result, setResult] = useState(() => getFactorizationResult(number));
   const primes = generatePrimes(2000);
 
   useEffect(() => {
@@ -24,21 +38,8 @@ export default function App() {
   const handleChange = (e) => {
     const value = e.target.value;
     setNumber(value);
-
-    if (isPositiveIntegerInput(value)) {
-      const factors = primeFactorization(value);
-      if (isPrime(value)) {
-        setResult(
-          `${value} => ${factors}<br/><br/>(${value} is a prime number)`,
-        );
-      } else {
-        setResult(
-          `${value} => ${factors}<br/><br/>(${value} is a composite number)`,
-        );
-      }
-    } else {
-      setResult("Please enter a positive integer.");
-    }
+    localStorage.setItem(NUMBER_STORAGE_KEY, value);
+    setResult(getFactorizationResult(value));
   };
 
   return (
