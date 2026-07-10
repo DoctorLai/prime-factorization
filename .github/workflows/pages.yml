@@ -7,14 +7,16 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
 
 concurrency:
   group: pages
   cancel-in-progress: false
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -33,32 +35,22 @@ jobs:
       - name: Build site
         run: npm run build
 
-      - name: Publish to gh-pages branch
-        run: |
-          set -euo pipefail
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
 
-          touch dist/.nojekyll
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+      - name: Upload GitHub Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
 
-          git fetch origin gh-pages || true
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
 
-          if git rev-parse --verify origin/gh-pages >/dev/null 2>&1; then
-            git worktree add /tmp/gh-pages origin/gh-pages
-            git -C /tmp/gh-pages checkout -B gh-pages
-            find /tmp/gh-pages -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
-          else
-            git worktree add --detach /tmp/gh-pages
-            git -C /tmp/gh-pages checkout --orphan gh-pages
-            git -C /tmp/gh-pages rm -rf . || true
-          fi
-
-          cp -R dist/. /tmp/gh-pages/
-          git -C /tmp/gh-pages add --all
-
-          if git -C /tmp/gh-pages diff --cached --quiet; then
-            echo "No GitHub Pages changes to publish."
-          else
-            git -C /tmp/gh-pages commit -m "chore: deploy GitHub Pages"
-            git -C /tmp/gh-pages push origin gh-pages
-          fi
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
