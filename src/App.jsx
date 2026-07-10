@@ -106,7 +106,7 @@ export default function App() {
             | Alternative Tool:{" "}
             <a
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               href="https://helloacm.com/tools/factor/"
             >
               Integer Factorization to Prime Factors with API

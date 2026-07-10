@@ -55,20 +55,20 @@ Open [http://localhost:5173/prime-factorization/](http://localhost:5173/prime-fa
 
 ## Commands
 
-| Command                    | Purpose                                      |
-| -------------------------- | -------------------------------------------- |
-| `npm run dev`              | Start the Vite development server.           |
-| `npm run format`           | Check Prettier formatting.                   |
-| `npm run format:fix`       | Format files with Prettier.                  |
-| `npm run lint`             | Run ESLint.                                  |
-| `npm run coverage`         | Run tests with coverage thresholds.          |
-| `npm run build`            | Build the production app.                    |
-| `npm run test`             | Run the Vitest suite once.                   |
-| `npm run check`            | Run formatting, lint, coverage, build, test. |
-| `npm run ci`               | Alias for `npm run check`.                   |
-| `npm run clean`            | Remove generated `dist` and `coverage`.      |
-| `npm run badges:languages` | Refresh `badges/languages.json`.             |
-| `npm run deploy`           | Build and publish `dist` with `gh-pages`.    |
+| Command                    | Purpose                                    |
+| -------------------------- | ------------------------------------------ |
+| `npm run dev`              | Start the Vite development server.         |
+| `npm run format`           | Check Prettier formatting.                 |
+| `npm run format:fix`       | Format files with Prettier.                |
+| `npm run lint`             | Run ESLint.                                |
+| `npm run coverage`         | Run tests with coverage thresholds.        |
+| `npm run build`            | Build the production app.                  |
+| `npm run test`             | Run the Vitest suite once.                 |
+| `npm run check`            | Run formatting, lint, coverage, and build. |
+| `npm run ci`               | Alias for `npm run check`.                 |
+| `npm run clean`            | Remove generated `dist` and `coverage`.    |
+| `npm run badges:languages` | Refresh `badges/languages.json`.           |
+| `npm run deploy`           | Build and publish `dist` with `gh-pages`.  |
 
 ## Coverage
 

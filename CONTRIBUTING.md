@@ -20,7 +20,7 @@ Thanks for considering a contribution to Prime Factorization.
 | `npm run coverage`         | Run tests with coverage thresholds.           |
 | `npm run build`            | Build the production app.                     |
 | `npm run test`             | Run the Vitest suite once.                    |
-| `npm run check`            | Run formatting, lint, coverage, build, test.  |
+| `npm run check`            | Run formatting, lint, coverage, and build.    |
 | `npm run badges:languages` | Refresh the JavaScript percentage badge data. |
 
 ## Pull Requests

@@ -19,7 +19,7 @@ concurrency:
 
 jobs:
   check:
-    name: Format, lint, test, coverage, and build
+    name: Format, lint, coverage, and build
     runs-on: ubuntu-latest
 
     steps:
@@ -57,6 +57,3 @@ jobs:
 
       - name: Build
         run: npm run build
-
-      - name: Test
-        run: npm run test

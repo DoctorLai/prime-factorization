@@ -8,8 +8,12 @@ export function primeFactorization(input) {
   let n;
   try {
     // Reject non-integers early
-    if (typeof input === "number" && !Number.isInteger(input))
+    if (
+      typeof input === "number" &&
+      (!Number.isInteger(input) || !Number.isSafeInteger(input))
+    ) {
       return "No prime factors";
+    }
     // Convert safely to BigInt
     n = typeof input === "bigint" ? input : BigInt(input);
   } catch {
@@ -58,7 +62,10 @@ export function primeFactorization(input) {
 export function isPrime(input) {
   let number;
   try {
-    if (typeof input === "number" && !Number.isInteger(input)) {
+    if (
+      typeof input === "number" &&
+      (!Number.isInteger(input) || !Number.isSafeInteger(input))
+    ) {
       return false;
     }
     number = typeof input === "bigint" ? input : BigInt(input);
@@ -92,7 +99,7 @@ export function isPositiveIntegerInput(input) {
     return input > 0n;
   }
   if (typeof input === "number") {
-    return Number.isInteger(input) && input > 0;
+    return Number.isInteger(input) && Number.isSafeInteger(input) && input > 0;
   }
   if (typeof input !== "string") {
     return false;

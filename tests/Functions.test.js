@@ -30,6 +30,9 @@ describe("primeFactorization", () => {
     expect(primeFactorization(1)).toBe("No prime factors");
     expect(primeFactorization(0)).toBe("No prime factors");
     expect(primeFactorization(-5)).toBe("No prime factors");
+    expect(primeFactorization(Number.MAX_SAFE_INTEGER + 2)).toBe(
+      "No prime factors",
+    );
   });
 
   it("should handle BigInt input", () => {
@@ -57,6 +60,7 @@ describe("isPrime", () => {
   it("rejects invalid or non-prime inputs", () => {
     expect(isPrime(1)).toBe(false);
     expect(isPrime(2.5)).toBe(false);
+    expect(isPrime(Number.MAX_SAFE_INTEGER + 2)).toBe(false);
     expect(isPrime("not a number")).toBe(false);
   });
 });
@@ -72,6 +76,7 @@ describe("isPositiveIntegerInput", () => {
     expect(isPositiveIntegerInput("2.5")).toBe(false);
     expect(isPositiveIntegerInput("0")).toBe(false);
     expect(isPositiveIntegerInput("-3")).toBe(false);
+    expect(isPositiveIntegerInput(Number.MAX_SAFE_INTEGER + 2)).toBe(false);
     expect(isPositiveIntegerInput("not a number")).toBe(false);
     expect(isPositiveIntegerInput({ value: 13 })).toBe(false);
   });
