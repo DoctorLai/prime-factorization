@@ -35,7 +35,7 @@ jobs:
         run: npm run badges:languages
 
       - name: Commit badge data
-        uses: stefanzweifel/git-auto-commit-action@v5
+        uses: stefanzweifel/git-auto-commit-action@v7
         with:
           commit_message: "chore: update language badge data"
           file_pattern: badges/languages.json
